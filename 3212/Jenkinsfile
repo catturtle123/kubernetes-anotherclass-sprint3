@@ -8,7 +8,7 @@ pipeline {
 
     environment {
         // 본인의 DockerHub username로 수정 해주세요.
-        DOCKERHUB_USERNAME = 'catturtle123'
+        DOCKERHUB_USERNAME = 'developerjamey'
         // 배포용 Github - Sprint3를 Fork 후 Username 변경 해주세요.
         RELEASE_GITHUB_URL = 'https://github.com/catturtle123/kubernetes-anotherclass-sprint3.git'
         // App용 Github - Api-Tester App 소스코드를 Fork 후 Username 변경 해주세요.
@@ -56,7 +56,7 @@ pipeline {
         stage('컨테이너 업로드') {
             steps {
 				withCredentials([usernamePassword(credentialsId: 'docker_password', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    sh "echo " + '${PASSWORD}' + " | docker login -u " + '${DOCKERHUB_USERNAME}' + " --password-stdin"
+                    sh "echo " + '${PASSWORD}' + " | docker login -u " + '${USERNAME}' + " --password-stdin"
                 }
 				
                 // DockerHub로 이미지 업로드
